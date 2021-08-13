@@ -1,0 +1,34 @@
+.MODEL SMALL
+.STACK 100
+.DATA
+		;--next line 
+		;STR1 DB "Good Morning", 0DH,0AH,"$"
+		
+		STR1 DB "Good Morning$"
+		NL DB 0DH,0AH,"$"
+		STR2 DB "Good Night$"
+		
+.CODE
+MAIN PROC
+		MOV AX,@DATA
+		MOV DS,AX
+		
+		;--TO DISPLAY A STRING
+		MOV AH,09H
+		LEA DX,STR1
+		INT 21H
+		
+		;--TO DISPLAY NEXT LINE
+		MOV AH,09H
+		LEA DX,NL
+		INT 21H
+		
+		;--TO DISPLAY A STRING
+		MOV AH,09H
+		LEA DX, STR2
+		INT 21H
+		
+		MOV AX,4c00H
+		INT 21H
+MAIN ENDP
+END MAIN
