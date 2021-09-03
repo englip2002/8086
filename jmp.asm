@@ -1,0 +1,33 @@
+.MODEL SMALL
+.STACK 100
+.DATA
+	STRP DB "PASS$"
+	STRF DB "FAIL$"
+	DIGIT DB 4
+.CODE
+MAIN PROC
+	MOV AX,@DATA
+	MOV DS,AX
+	
+	;if (digit>=5)
+	;	printf("pass")
+	;else
+	;	printf("fail")
+	CMP DIGIT,5
+	JAE PASS
+	MOV AH,09H
+	LEA DX,STRF
+	INT 21H
+	JMP EXIT
+	
+PASS:
+	MOV AH,09H
+	LEA DX,STRP
+	INT 21H
+
+EXIT:
+	MOV AX,4C00H
+	INT 21H
+	
+MAIN ENDP
+	END MAIN
