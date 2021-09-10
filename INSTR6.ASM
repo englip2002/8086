@@ -54,7 +54,7 @@ COMPARE:
 	JNE NOTEQ   ;--not equal
 	LOOP COMPARE
 	
-;--display same
+	;--display same
 	MOV AH,09H
 	LEA DX,SAME
 	INT 21H
