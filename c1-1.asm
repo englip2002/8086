@@ -10,6 +10,8 @@
 MAIN PROC
 	MOV AX,@DATA
 	MOV DS,AX
+
+	;--testing
 	
 	MOV CL,4
 	MOV CH,0
